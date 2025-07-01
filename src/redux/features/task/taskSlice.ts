@@ -11,6 +11,9 @@ const initialState: InitialState = {
     filter: "ALL"
 }
 
+
+
+type DraftTask = Pick<ITask, "title" | "description" | "dueDate" | "priority">
 const taskSlice = createSlice({
     name: "tasks",
     initialState,

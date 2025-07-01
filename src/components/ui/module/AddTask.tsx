@@ -19,7 +19,7 @@ import {
 
 
 
-import { useForm } from "react-hook-form";
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 
 
 
@@ -61,9 +61,9 @@ export function AddTaskModal() {
 
 
 
-    const onSubmit = (data: ITask) => {
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
 
-        dispatch(addTask(data));
+        dispatch(addTask(data as ITask));
 
         setOpen(false);
 
@@ -263,11 +263,11 @@ export function AddTaskModal() {
 
                                                     onSelect={field.onChange}
 
-                                                    disabled={(date) =>
+                                                    // disabled={(date) =>
 
-                                                        date > new Date() || date < new Date("1900-01-01")
+                                                    //     date > new Date() || date < new Date("1900-01-01")
 
-                                                    }
+                                                    // }
 
                                                     captionLayout="dropdown"
 
