@@ -1,9 +1,10 @@
-import { selectFilter, selectTasks } from "@/redux/features/task/taskSlice";
+import {  AddTaskModal } from "@/components/ui/module/AddTask";
+import { selectTasks } from "@/redux/features/task/taskSlice";
 import { useAppSelector } from "@/redux/hooks";
 
 const Task = () => {
     const tasks = useAppSelector(selectTasks);
-    const filter = useAppSelector(selectFilter);
+    // const filter = useAppSelector(selectFilter);
 
     const priorityColor = {
         HIGH: 'bg-red-500',
@@ -13,6 +14,8 @@ const Task = () => {
 
     return (
         <div className="space-y-4">
+
+            <AddTaskModal />
             {tasks.map((task) => (
                 <div
                     key={task.id}
@@ -25,12 +28,12 @@ const Task = () => {
                         >
 
                         </span>
-                        <h2 className="text-xl font-semibold">{task.title}</h2>
+                        <h2 className="text-xl font-semibold">{task?.title}</h2>
 
                     </div>
                     <p className="mt-2 text-sm text-gray-300">{task.description}</p>
                     <div className="mt-4 flex justify-between items-center text-sm">
-                        <span className="text-gray-400">Due: {task.dueDate}</span>
+                        <span className="text-gray-400">Due: {task?.dueDate?.toString()}</span>
                         <span
                             className={`px-2 py-1 rounded-full text-xs font-medium ${task.isCompleted ? 'bg-green-600' : 'bg-yellow-600'
                                 }`}
